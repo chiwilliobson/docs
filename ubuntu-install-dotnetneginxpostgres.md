@@ -19,6 +19,8 @@ openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
 openssl rsa -in server.key -out server.key.unencrypted
 mv server.key.unencrypted server.key
 
+### Copy files to postgres directory
+sudo cp server.crt server.key /etc/postgresql/16/main/ && sudo chown postgres:postgres /etc/postgresql/16/main/server.crt /etc/postgresql/16/main/server.key
 
 ### Configure Postgres
 
@@ -38,7 +40,7 @@ sudo nano /etc/postgresql/16/main/pg_hba.conf
 
 $# TYPE DATABASE  USER      ADDRESS      METHOD  OPTIONS
 
-hostssl all      all       0.0.0.0/0    scram-sha-256
+hostssl    all      all       0.0.0.0/0    scram-sha-256
 
 
 ## Dotnet and Nginx
