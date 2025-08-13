@@ -27,16 +27,17 @@ sudo nano /etc/postgresql/16/main/postgresql.conf
 
 ssl = on
 
-ssl_cert_file = '/etc/postgresql/14/main/server.crt'
+ssl_cert_file = '/etc/postgresql/16/main/server.crt'
 
-ssl_key_file = '/etc/postgresql/14/main/server.key'
+ssl_key_file = '/etc/postgresql/16/main/server.key'
 
 listen_addresses = '*'		# what IP address(es) to listen on;
 
 ---------------
-sudo nano /etc/postgresql/14/main/pg_hba.conf
+sudo nano /etc/postgresql/16/main/pg_hba.conf
 
 $# TYPE DATABASE  USER      ADDRESS      METHOD  OPTIONS
+
 hostssl all      all       0.0.0.0/0    scram-sha-256
 
 
