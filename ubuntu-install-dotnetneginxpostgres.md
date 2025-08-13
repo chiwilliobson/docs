@@ -24,16 +24,16 @@ mv server.key.unencrypted server.key
 
 sudo nano /etc/postgresql/16/main/postgresql.conf
 
-  ssl = on
-  ssl_cert_file = '/path/to/your/server.crt'
-  ssl_key_file = '/path/to/your/server.key'
-  
-  listen_addresses = '*'		# what IP address(es) to listen on;
+ssl = on
+ssl_cert_file = '/path/to/your/server.crt'
+ssl_key_file = '/path/to/your/server.key'
+
+listen_addresses = '*'		# what IP address(es) to listen on;
 
 sudo nano /etc/postgresql/14/main/pg_hba.conf
 
-  $# TYPE DATABASE  USER      ADDRESS      METHOD  OPTIONS
-  hostssl all      all       0.0.0.0/0    scram-sha-256
+$# TYPE DATABASE  USER      ADDRESS      METHOD  OPTIONS
+hostssl all      all       0.0.0.0/0    scram-sha-256
 
 
 ## Dotnet and Nginx
