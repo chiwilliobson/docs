@@ -1,19 +1,39 @@
-## Postgres
-# Install postgres in ubuntu
+# Postgres
+### Install postgres in ubuntu
 ... use copilot
 
-# Coonfigure postgres SSL
+### Coonfigure postgres SSL
 sudo find /etc/postgresql -name "postgresql.conf"
 /etc/postgresql/16/main/postgresql.conf
 
-# Generate a private key
+### Generate a private key
 sudo openssl genrsa -des3 -out server.key 2048
 
-# Generate a Certificate Signing Request (CSR)
+### Generate a Certificate Signing Request (CSR)
 sudo openssl req -new -key server.key -out server.csr
 
-# Generate the self-signed certificate
+### Generate the self-signed certificate
 openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+
+### You'll need to remove the passphrase from the private key if you don't want to enter it every time the PostgreSQL server starts.
+openssl rsa -in server.key -out server.key.unencrypted
+mv server.key.unencrypted server.key
+
+
+### Configure Postgres
+
+sudo nano /etc/postgresql/16/main/postgresql.conf
+
+  ssl = on
+  ssl_cert_file = '/path/to/your/server.crt'
+  ssl_key_file = '/path/to/your/server.key'
+  
+  listen_addresses = '*'		# what IP address(es) to listen on;
+
+sudo nano /etc/postgresql/14/main/pg_hba.conf
+
+  $# TYPE DATABASE  USER      ADDRESS      METHOD  OPTIONS
+  hostssl all      all       0.0.0.0/0    scram-sha-256
 
 
 ## Dotnet and Nginx
