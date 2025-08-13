@@ -1,3 +1,23 @@
+## Postgres
+# Install postgres in ubuntu
+... use copilot
+
+# Coonfigure postgres SSL
+sudo find /etc/postgresql -name "postgresql.conf"
+/etc/postgresql/16/main/postgresql.conf
+
+# Generate a private key
+sudo openssl genrsa -des3 -out server.key 2048
+
+# Generate a Certificate Signing Request (CSR)
+sudo openssl req -new -key server.key -out server.csr
+
+# Generate the self-signed certificate
+openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+
+
+## Dotnet and Nginx
+
 # Update the package list to ensure you have the latest information
 sudo apt-get update && sudo apt-get install -y software-properties-common
 
@@ -19,3 +39,7 @@ sudo systemctl start nginx
 
 # Enable NGINX to start automatically on system boot
 sudo systemctl enable nginx
+
+
+
+
