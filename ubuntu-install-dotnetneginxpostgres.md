@@ -2,7 +2,7 @@
 ### Install postgres in ubuntu
 ... use copilot
 
-### Coonfigure postgres SSL
+## Coonfigure postgres SSL
 sudo find /etc/postgresql -name "postgresql.conf"
 /etc/postgresql/16/main/postgresql.conf
 
