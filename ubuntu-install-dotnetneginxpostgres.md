@@ -70,7 +70,7 @@ sudo systemctl start nginx
 ### Enable NGINX to start automatically on system boot
 sudo systemctl enable nginx
 
-### Install SSl with certbot
+### Install SSL with certbot
 #### 1. Install Certbot
 sudo apt update
 sudo apt install snapd
