@@ -70,6 +70,19 @@ sudo systemctl start nginx
 ### Enable NGINX to start automatically on system boot
 sudo systemctl enable nginx
 
+### Install SSl with certbot
+#### 1. Install Certbot
+sudo apt update
+sudo apt install snapd
+sudo snap install core; sudo snap refresh core
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+
+#### 2. Obtain SSL certificate (follow the prompts)
+sudo certbot --nginx -d yourdomain.com
+
+#### 3. Test automatic renewal
+sudo certbot renew --dry-run
 
 
 
